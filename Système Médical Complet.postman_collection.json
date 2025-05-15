@@ -1,0 +1,768 @@
+{
+	"info": {
+		"_postman_id": "24d5cbe2-cb93-433d-85a4-e2ac393cb079",
+		"name": "Système Médical Complet",
+		"description": "Collection complète pour tester les microservices de gestion médicale (patients, médecins et dossiers médicaux)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37269911",
+		"_collection_link": "https://gold-astronaut-737234.postman.co/workspace/New-Team-Workspace~a9bc200b-d744-4224-a71e-adcb4806d419/collection/37269911-24d5cbe2-cb93-433d-85a4-e2ac393cb079?action=share&source=collection_link&creator=37269911"
+	},
+	"item": [
+		{
+			"name": "1 - Patient Service",
+			"item": [
+				{
+					"name": "Liste de tous les patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/patient-service/api/patients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patient-service",
+								"api",
+								"patients"
+							]
+						},
+						"description": "Récupère la liste de tous les patients"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir un patient par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/patient-service/api/patient/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patient-service",
+								"api",
+								"patient",
+								"1"
+							]
+						},
+						"description": "Récupère les détails d'un patient spécifique par son ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Créer un patient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"Ba\",\n    \"prenom\": \"Ibrahima\",\n    \"dateNaissance\": \"1992-07-25\",\n    \"adresse\": \"35 Rue des Almadies, Dakar\",\n    \"telephone\": \"77 890 12 34\",\n    \"email\": \"ibrahima.ba@example.com\",\n    \"medecinId\": 3\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/patient",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"patient"
+							]
+						},
+						"description": "Crée un nouveau patient"
+					},
+					"response": []
+				},
+				{
+					"name": "Mettre à jour un patient",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"Ba\",\n    \"prenom\": \"Ibrahima\",\n    \"dateNaissance\": \"1992-07-25\",\n    \"adresse\": \"42 Boulevard Maritime, Dakar\",\n    \"telephone\": \"77 890 12 34\",\n    \"email\": \"ibrahima.ba@example.com\",\n    \"medecinId\": 3\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/patient-service/api/patient/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patient-service",
+								"api",
+								"patient",
+								"5"
+							]
+						},
+						"description": "Met à jour les informations d'un patient existant"
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer un patient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/patient-service/api/patient/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patient-service",
+								"api",
+								"patient",
+								"5"
+							]
+						},
+						"description": "Supprime un patient"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relatifs à la gestion des patients"
+		},
+		{
+			"name": "2 - Médecin Service",
+			"item": [
+				{
+					"name": "Liste de tous les médecins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/mdecin-service/api/medecins",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"mdecin-service",
+								"api",
+								"medecins"
+							]
+						},
+						"description": "Récupère la liste de tous les médecins"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir un médecin par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/medecin-service/api/medecin/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"medecin-service",
+								"api",
+								"medecin",
+								"1"
+							]
+						},
+						"description": "Récupère les détails d'un médecin spécifique par son ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Créer un médecin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"Gueye\",\n    \"prenom\": \"Fatou\",\n    \"specialite\": \"Dermatologie\",\n    \"telephone\": \"70 111 22 33\",\n    \"email\": \"fatou.gueye@clinique.sn\",\n    \"adresseCabinet\": \"Clinique de la Peau, Médina\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/medecin-service/api/medecin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"medecin-service",
+								"api",
+								"medecin"
+							]
+						},
+						"description": "Crée un nouveau médecin"
+					},
+					"response": []
+				},
+				{
+					"name": "Mettre à jour un médecin",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"Gueye\",\n    \"prenom\": \"Fatou\",\n    \"specialite\": \"Dermato-vénéréologie\",\n    \"telephone\": \"70 111 22 33\",\n    \"email\": \"dr.fatou.gueye@clinique.sn\",\n    \"adresseCabinet\": \"Clinique de la Peau, Médina, 3ème étage\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/medecin-service/api/medecin/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"medecin-service",
+								"api",
+								"medecin",
+								"5"
+							]
+						},
+						"description": "Met à jour les informations d'un médecin existant"
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer un médecin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/medecin-service/api/medecin/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"medecin-service",
+								"api",
+								"medecin",
+								"5"
+							]
+						},
+						"description": "Supprime un médecin"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relatifs à la gestion des médecins"
+		},
+		{
+			"name": "3 - Dossier Médical Service",
+			"item": [
+				{
+					"name": "Liste de tous les dossiers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/dossier-medical-service-service/api/dossiers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dossier-medical-service-service",
+								"api",
+								"dossiers"
+							]
+						},
+						"description": "Récupère la liste de tous les dossiers médicaux"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir un dossier par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/dossier-medical-service/api/dossier/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dossier-medical-service",
+								"api",
+								"dossier",
+								"1"
+							]
+						},
+						"description": "Récupère les détails d'un dossier médical spécifique par son ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Dossiers d'un patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/dossiers/patient/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dossiers",
+								"patient",
+								"1"
+							]
+						},
+						"description": "Récupère tous les dossiers médicaux d'un patient spécifique"
+					},
+					"response": []
+				},
+				{
+					"name": "Dossiers d'un médecin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/dossiers/medecin/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dossiers",
+								"medecin",
+								"1"
+							]
+						},
+						"description": "Récupère tous les dossiers médicaux gérés par un médecin spécifique"
+					},
+					"response": []
+				},
+				{
+					"name": "Créer un dossier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero\": \"DM-2023-003\",\n    \"patientId\": 3,\n    \"medecinId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/dossier-medical-service/api/dossier",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dossier-medical-service",
+								"api",
+								"dossier"
+							]
+						},
+						"description": "Crée un nouveau dossier médical"
+					},
+					"response": []
+				},
+				{
+					"name": "Mettre à jour un dossier",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patientId\": 3,\n    \"medecinId\": 3\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/dossier-medical-service/api/dossier/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dossier-medical-service",
+								"api",
+								"dossier",
+								"3"
+							]
+						},
+						"description": "Met à jour un dossier médical existant"
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer un dossier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/dossier-medical-service/api/dossier/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"dossier-medical-service",
+								"api",
+								"dossier",
+								"3"
+							]
+						},
+						"description": "Supprime un dossier médical"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relatifs à la gestion des dossiers médicaux"
+		},
+		{
+			"name": "4 - Tests de Workflow",
+			"item": [
+				{
+					"name": "1. Créer un médecin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"medecin_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"Diallo\",\n    \"prenom\": \"Omar\",\n    \"specialite\": \"Médecine générale\",\n    \"telephone\": \"76 111 22 33\",\n    \"email\": \"omar.diallo@example.sn\",\n    \"adresseCabinet\": \"Centre Médical du Plateau, Dakar\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/medecin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"medecin"
+							]
+						},
+						"description": "Étape 1: Créer un médecin et sauvegarder son ID"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Créer un patient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"patient_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"Sarr\",\n    \"prenom\": \"Aminata\",\n    \"dateNaissance\": \"1985-03-12\",\n    \"adresse\": \"15 Avenue Léopold Sédar Senghor, Dakar\",\n    \"telephone\": \"77 123 45 67\",\n    \"email\": \"aminata.sarr@example.com\",\n    \"medecinId\": {{medecin_id}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/patient",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"patient"
+							]
+						},
+						"description": "Étape 2: Créer un patient avec le médecin créé précédemment"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Créer un dossier médical",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"dossier_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero\": \"DM-WORKFLOW-001\",\n    \"patientId\": {{patient_id}},\n    \"medecinId\": {{medecin_id}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/dossier",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dossier"
+							]
+						},
+						"description": "Étape 3: Créer un dossier médical pour le patient avec le médecin"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Vérifier le dossier créé",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/dossier/{{dossier_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dossier",
+								"{{dossier_id}}"
+							]
+						},
+						"description": "Étape 4: Vérifier les détails du dossier médical créé"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Vérifier les dossiers du patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/dossiers/patient/{{patient_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dossiers",
+								"patient",
+								"{{patient_id}}"
+							]
+						},
+						"description": "Étape 5: Vérifier que le dossier apparaît dans la liste des dossiers du patient"
+					},
+					"response": []
+				},
+				{
+					"name": "6. Vérifier les dossiers du médecin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/dossiers/medecin/{{medecin_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dossiers",
+								"medecin",
+								"{{medecin_id}}"
+							]
+						},
+						"description": "Étape 6: Vérifier que le dossier apparaît dans la liste des dossiers du médecin"
+					},
+					"response": []
+				},
+				{
+					"name": "7. Mettre à jour le dossier",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patientId\": {{patient_id}},\n    \"medecinId\": {{medecin_id}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/dossier/{{dossier_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dossier",
+								"{{dossier_id}}"
+							]
+						},
+						"description": "Étape 7: Mettre à jour le dossier médical"
+					},
+					"response": []
+				}
+			],
+			"description": "Série de requêtes pour tester un workflow complet de création d'un médecin, d'un patient et d'un dossier médical"
+		},
+		{
+			"name": "5 - Vérification des services",
+			"item": [
+				{
+					"name": "Health Check - Patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"actuator",
+								"health"
+							]
+						},
+						"description": "Vérifie l'état de santé du service patient"
+					},
+					"response": []
+				},
+				{
+					"name": "Health Check - Médecin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"actuator",
+								"health"
+							]
+						},
+						"description": "Vérifie l'état de santé du service médecin"
+					},
+					"response": []
+				},
+				{
+					"name": "Health Check - Dossier Médical",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"actuator",
+								"health"
+							]
+						},
+						"description": "Vérifie l'état de santé du service dossier médical"
+					},
+					"response": []
+				},
+				{
+					"name": "Health Check - Gateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"actuator",
+								"health"
+							]
+						},
+						"description": "Vérifie l'état de santé de la gateway"
+					},
+					"response": []
+				}
+			],
+			"description": "Requêtes pour vérifier l'état de santé des différents services"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:9999",
+			"type": "string"
+		}
+	]
+}
